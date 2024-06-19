@@ -15,9 +15,16 @@ function States() {
             const countriesUrl = 'https://crio-location-selector.onrender.com/countries'
             try {
                 let response = await fetch(countriesUrl)
-                const countries = await response.json()
-                console.log('countries:: ', countries)
+                let temp = await response.json()
+                
+                let countries = []
+                for(let i=0;i<temp.length;i++) {
+                    if(!countries.includes(temp[i].trim())) {
+                        countries.push(temp[i].trim())
+                    }
+                }
                 setCountries(countries)
+                console.log('countries:: ', countries)
             } catch(error) {
                 console.log(error)
             }   
