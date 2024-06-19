@@ -38,7 +38,9 @@ function States() {
             }
             
         } 
-        fetchData() 
+        if(country.length>0) {
+            fetchData() 
+        }
     }, [country])
     useEffect(()=>{
         async function fetchData() {
@@ -54,7 +56,10 @@ function States() {
             }
             
         }  
-        fetchData() 
+        if(state.length>0) {
+            fetchData() 
+        }
+        
     }, [state])
   return (
     <div className='container'>
@@ -64,6 +69,8 @@ function States() {
                 console.log(event.target.value)
                 if(event.target.value!='Select Country') {
                     setCountry(event.target.value)
+                } else {
+                    setCountry('')
                 }
             }}>
             <option>Select Country</option>
@@ -77,6 +84,8 @@ function States() {
                 console.log(event.target.value)
                 if(event.target.value!='Select State') {
                     setState(event.target.value)
+                }else {
+                    setState('')
                 }
             }}>
             <option>Select State</option>
@@ -90,6 +99,8 @@ function States() {
                 console.log(event.target.value)
                 if(event.target.value!='Select City') {
                     setCity(event.target.value)
+                } else {
+                    setCity('')
                 }
             }}>
             <option>Select City</option>
