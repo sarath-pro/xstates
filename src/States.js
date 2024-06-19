@@ -18,11 +18,15 @@ function States() {
                 let temp = await response.json()
                 
                 let countries = []
+                let two = []
                 for(let i=0;i<temp.length;i++) {
-                    if(!countries.includes(temp[i].trim())) {
-                        countries.push(temp[i].trim())
+                    if(temp[i][0]==' ') {
+                        two.push(temp[i]+"2")
+                    } else {
+                        countries.push(temp[i])
                     }
                 }
+                countries.push(...two)
                 setCountries(countries)
                 console.log('countries:: ', countries)
             } catch(error) {
